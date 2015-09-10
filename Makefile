@@ -29,6 +29,9 @@ CPP  = g++
 CC   = gcc
 WINDRES = windres
 DLLTOOL = dlltool
+RM = rm -f
+MKDIR = mkdir -p
+
 ENCBIN  = bin/rnc$(EXEEXT)
 DECBIN  = bin/dernc$(EXEEXT)
 ENCOBJS = obj/rnc.o obj/lbrncpack.o
@@ -62,6 +65,9 @@ RM = rm -f
 .PHONY: all all-before all-after clean clean-custom
 
 all: all-before $(ENCBIN) $(DECBIN) all-after
+
+all-before:
+	$(MKDIR) obj bin
 
 clean: clean-custom
 	-${RM} $(OBJS) $(ENCOBJS) $(DECOBJS) $(ENCBIN) $(DECBIN)
